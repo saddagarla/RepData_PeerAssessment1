@@ -1,5 +1,5 @@
 ========================================================
-title: "Reproducible Research - Peer Assesment 1"
+Reproducible Research - Peer Assesment 1
 ========================================================
 
  
@@ -10,7 +10,7 @@ require(dplyr)
 require(magrittr)
 ```
 
-# Loading and preprocessing the data
+### Loading and preprocessing the data
 
 
 ```r
@@ -35,7 +35,7 @@ activity$date <- as.Date(activity$date)
 stepsPerDay = aggregate(steps~date, activity, sum,na.rm=TRUE)
 ```
 
-# Plot the Histogram
+### Plot the Histogram
 
 ```r
 hist(stepsPerDay$steps, 
@@ -47,7 +47,7 @@ hist(stepsPerDay$steps,
 
 ![plot of chunk unnamed-chunk-5](figure/unnamed-chunk-5-1.png)
 
-#What is mean total number of steps taken per day?
+### What is mean total number of steps taken per day?
 
 
 ```r
@@ -69,7 +69,7 @@ median.StepsPerDay
 ## [1] 10765
 ```
 
-# The average daily activity pattern
+### The average daily activity pattern
 
 ```r
 five.min.avg <- aggregate(steps~interval, data=activity, FUN=mean, na.rm=TRUE)
@@ -85,7 +85,7 @@ plot(x = five.min.avg$interval, y = five.min.avg$steps,
 
 ![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png)
 
-# Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
+### Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
 
 ```r
@@ -104,7 +104,7 @@ max_interval
 ## [1] "08:35"
 ```
 
-# Imputing missing Values.
+### Imputing missing Values.
 
 
 1. Calculate and report the total number of missing values in the dataset.  
@@ -131,7 +131,7 @@ print(missing)
 na.rows <- which(is.na(activity$steps))
 ```
 
-# Imputing strategy
+### Imputing strategy
 
 We will impute the values by filling in the mean of the steps in each interval for that Weekday.
 
@@ -199,7 +199,7 @@ print(missing)
 stepsPerDay = aggregate(steps~date, imputed, sum,na.rm=TRUE)
 ```
 
-# Plot the Histogram with imputed values.
+### Plot the Histogram with imputed values.
 
 ```r
 hist(stepsPerDay$steps, 
@@ -242,7 +242,7 @@ print(mean.StepsPerDay)
 
 These values are slightly higher  from median/mean values with missing observations. The impact of imputing the missing values is to have more data, resulting in a slightly higher mean and median values.
 
-# Are there differences in activity patterns between weekdays and weekends?
+### Are there differences in activity patterns between weekdays and weekends?
 
 1. Create a new factor variable in the dataset with two levels - "weekday" and "weekend" indicating whether a given date is a weekday or weekend day.
 
@@ -285,7 +285,7 @@ imputed <- cbind(imputed,
 
  Observations:
 
-1. From this plot, one can clearly see that there is adifference in activity pattern between weekdays and weekends. The plot indicates that the person  is more active  between 8:15AM and 8:45Am on weekdays.
+1. From this plot, one can clearly see that there is adifference in activity pattern between weekdays and weekends. The plot indicates that the person  is more active  between 8:15AM and 8:45Am on weekdays as indicated by the big spike.
   
 
 2. On the Weekends, activity is more sluggish (compared to weekdays) until around 8:00am, but there is more activity during the day on average.  
