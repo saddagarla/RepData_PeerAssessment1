@@ -51,7 +51,7 @@ median.StepsPerDay
 ```
 
 ### The average daily activity pattern
-```{r}
+```{r fig.width=8, fig.height=6}
 five.min.avg <- aggregate(steps~interval, data=activity, FUN=mean, na.rm=TRUE)
 five.min.avg$interval  <- as.POSIXct(strptime(sprintf("%04d", five.min.avg$interval), "%H%M"))
 
@@ -214,9 +214,9 @@ imputed <- cbind(imputed,
 
  Observations:
 
-1. From this plot, one can clearly see that there is adifference in activity pattern between weekdays and weekends. The plot indicates that the person  is more active  between 8:15AM and 8:45Am on weekdays as indicated by the big spike.
+1. From this plot, one can clearly see that there is adifference in activity pattern between weekdays and weekends. The plot indicates that the person  is more active  between 8:15AM and 8:45AM on weekdays as indicated by the big spike.
   
 
-2. On the Weekends, activity is more sluggish (compared to weekdays) until around 8:00am, but there is more activity during the day on average.  
+2. On the Weekends, activity is more sluggish (compared to weekdays) until around 8:00AM, but there is more activity during the day on average.  
 
-3. Activity has almost stopped on Weekdays by 20:00 (8pm) , while Weekends show surges of activity until 21:30 (9:30pm).
+3. Activity has almost stopped on Weekdays by 8:00PM , while Weekends show surges of activity until 9:30PM.
